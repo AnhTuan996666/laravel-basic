@@ -19,8 +19,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'department_id',
+        'status_id'
     ];
 
     /**
@@ -41,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function department() {
+        return $this->belongsTo(DepartMent::class , 'department_id', 'id');
+    }
+
+    public function status() {
+        return $this->belongsTo(UserStatus::class , 'status_id', 'id');
+    }
 }

@@ -1,3 +1,11 @@
+import UsersList from "../pages/admin/users/index.vue";
+import UsersCreate from "../pages/admin/users/create.vue";
+import UsersRoles from "../pages/admin/roles/index.vue";
+import UsersSettings from "../pages/admin/settings/index.vue";
+
+//login
+import Login from "../pages/login/index.vue";
+
 const admin = [
     {
         path: "/admin",
@@ -6,25 +14,29 @@ const admin = [
             {
                 path: "users",
                 name: "admin-users",
-                component: () => import ("../pages/admin/users/index.vue")
+                component: () => UsersList
             },
             {
                 path: "users/create",
                 name: "admin-users-create",
-                component: () => import ("../pages/admin/users/create.vue")
+                component: () => UsersCreate
             },
             {
                 path: "roles",
                 name: "admin-roles",
-                component: () => import ("../pages/admin/roles/index.vue")
+                component: () => UsersRoles
             },
 
             {
                 path: "settings",
                 name: "admin-settings",
-                component: () => import ("../pages/admin/settings/index.vue")
+                component: () => UsersSettings
             }
         ]
+    },
+    {
+        path: "/login",
+        component: () => Login,
     }
 ];
 
