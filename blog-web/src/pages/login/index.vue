@@ -1,10 +1,13 @@
 <template>
   <section class="vh-100">
     <div id="id01" class="modal">
-      <form
+      <a-form
+        ref="formRef"
+        :model="formState"
+        name="basic"
+        autocomplete="off"
+        :rules="rules"
         class="modal-content animate"
-        action="/action_page.php"
-        method="post"
       >
         <div class="imgcontainer">
           <img src="@/assets/img/logo_login.png" alt="Avatar" class="avatar" />
@@ -12,22 +15,16 @@
 
         <div class="container">
           <label for="uname"><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-            required
-          />
+          <a-form-item name="username">
+            <a-input v-model="formState.username" />
+          </a-form-item>
 
           <label for="psw"><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          />
+          <a-form-item name="password">
+            <a-input-password v-model="formState.password" />
+          </a-form-item>
 
-          <button type="submit">Login</button>
+          <button type="submit" @click="onSubmit">Login</button>
           <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
@@ -44,15 +41,62 @@
           </button>
           <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
-      </form>
+      </a-form>
     </div>
   </section>
 </template>
 
 <script>
+import { reactive, ref } from "vue";
 export default {
   setup() {
-    return {};
+    const formState = reactive({
+      username: "",
+      password: "",
+    });
+
+    const formRef = ref();
+
+    const rules = {
+      password: [
+        {
+          required: true,
+          message: "Please input password",
+          trigger: "change",
+        },
+        {
+          min: 3,
+          max: 5,
+          message: "Length should be 3 to 5",
+          trigger: "blur",
+        },
+      ],
+      username: [
+        {
+          required: true,
+          message: "Please input your username!",
+          trigger: "change",
+        },
+        {
+          min: 3,
+          max: 5,
+          message: "Length should be 3 to 5",
+          trigger: "blur",
+        },
+      ],
+    };
+
+    const onSubmit = () => {
+      formRef.value
+        .validate()
+        .then(() => {
+          console.log("values", formState, toRaw(formState));
+        })
+        .catch((error) => {
+          console.log("error 1111", error);
+        });
+    };
+    return { onSubmit, formState, rules, formRef };
   },
 };
 </script>
@@ -161,5 +205,20 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+}
+</style>
+
+<style>
+.ant-input {
+  height: 40px !important;
+  margin: 0 !important;
+}
+
+.ant-input-password {
+  height: 40px !important;
+}
+
+.ant-input-password .ant-input {
+  height: 30px !important;
 }
 </style>

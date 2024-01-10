@@ -5,6 +5,7 @@ import axios from 'axios'
 window.axios = axios;
 
 import {
+    Form,
     Input,
     InputPassword,
     Select,
@@ -51,6 +52,7 @@ app.use(Menu);
 app.use(List);
 app.use(Button);
 app.use(Drawer);
+app.use(Form);
 app.mount('#app');
 
 app.config.globalProperties.$message = message;

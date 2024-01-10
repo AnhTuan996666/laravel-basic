@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,4 @@ Route::get('/user/{id}', [UserController::class, 'show']);
 Route::get('/users', [UserController::class, 'index']);
 
 Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/login', [LoginController::class, 'show']);
