@@ -11,13 +11,13 @@ class LoginController extends Controller
 {
     //
     public function show(Request $request) {
-        $show = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+        $p = $request->only([
+            'email', 'password'
         ]);
+        $attemp = Auth::attempt($p, true);
+        if (!$attemp) return ResponseHelper::ResponseError([], 'Login Failed');
+        JWTAuth::from(auth()->user());
         
-        $auth = Auth::attempt($show);
-        
-        return $auth ? ResponseHelper::ResponseSuccess(Auth::user(), 'Login success') : ResponseHelper::ResponseError(Auth::user(), 'Login Failed');
+        return ResponseHelper::ResponseSuccess(Auth::user(), 'Login success');
     }
 }
