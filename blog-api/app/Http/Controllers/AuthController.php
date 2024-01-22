@@ -19,12 +19,12 @@ class AuthController extends Controller
 
     public function login(UserLogin $request) {
         $param= $request->validated();
-        if(Auth::attempt($param)) {
+        if(Auth::attempt($param, true)) {
             $user = auth()->user();
             $token = $user->createToken('blog.vn')->accessToken;
-            return Controller::ResponseSuccess(Auth::user(), $token ,'Login success');
+            return parent::ResponseSuccess($user, $token ,'Login success');
         }else {
-            return Controller::ResponseError([], 'Login Failed');
+            return parent::ResponseError([], 'Login Failed');
         }
     }
 
