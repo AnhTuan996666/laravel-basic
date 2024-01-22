@@ -10,12 +10,10 @@ use App\Http\Requests\UserRegister;
 class AuthController extends Controller
 {
     public function register(UserRegister $request) {
-        $department = Department::find(1);
         $request = request()->only(['avatar','name','username', 'email', 'password', 'status', 'department_id']);
         $request["password"] = Hash::make($request["password"]);
-        $request["department_id"] = $department->department_id;
         $queryResult = User::create($request);
-        return $queryResult ? Controller::ResponseSuccess($queryResult, 'User successfully created') : Controller::ResponseError($queryResult, 'Cannot create user');
+        return $queryResult ? parent::ResponseSuccess($queryResult, 'User successfully created') : parent::ResponseError([], 'Cannot create user');
     }
 
     public function login(UserLogin $request) {

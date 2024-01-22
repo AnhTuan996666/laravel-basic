@@ -87,7 +87,6 @@ export default defineComponent({
     const getUsers = async () => {
       try {
         const res = await userApi.listUser({});
-        console.log(res);
         users.value = res;
       } catch (error) {
         console.error(error);

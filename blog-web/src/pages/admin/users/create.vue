@@ -101,8 +101,9 @@
               show-search
               placeholder="Phòng ban"
               style="width: 100%"
-              :options="[]"
+              :options="departments"
               :filter-option="[]"
+              v-model="selectedOption"
             ></a-select>
           </div>
         </div>
@@ -158,12 +159,36 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { useMenu } from "../../../stores/use-menu.js";
+import { defineComponent, ref, onMounted } from "vue";
+import { useMenu } from "@/stores/use-menu.js";
+import * as userApi from "@/services/axios/UsersApi.js";
 
 export default defineComponent({
   setup() {
     useMenu().onSelectedKeys(["admin-users"]);
+    const selectedOption = ref(null);
+    const departments = ref([]);
+
+    const getListDepartments = async () => {
+      try {
+        const res = await userApi.listDepartments({});
+        departments.value = res.data.map(department =>({
+            value: department.id,
+            label: department.name,
+        }));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    onMounted(()=> {
+      getListDepartments();
+    })
+   
+    return {
+      departments,
+      selectedOption
+    }
   },
 });
 </script>

@@ -15,7 +15,8 @@ class DepartMentController extends Controller
      */
     public function index()
     {
-        //
+        $department = Department::all();
+        return  $department ? parent::ResponseSuccess($department, 'User successfully created') : parent::ResponseError([], 'Cannot create user');
     }
 
     /**
