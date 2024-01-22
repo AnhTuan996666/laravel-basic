@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             "email" => "admin@gmail.com",
             "password" => Hash::make("123456"),
             "department_id" => "1",
-            "status_id" => "1",
+            "status" => "1",
         ]);
     }
 }

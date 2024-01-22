@@ -17,7 +17,8 @@ class DepartmentrSeeder extends Seeder
     {
         //
         DB::table('departments')->insert([
-            "name" => "Admin",
+            ["name" => "1"],
+            ["name" => "2"],
         ]);
     }
 }

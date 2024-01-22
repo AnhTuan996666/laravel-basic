@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\User;    
+use App\Models\User;
+use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserLogin;
@@ -9,11 +10,11 @@ use App\Http\Requests\UserRegister;
 class AuthController extends Controller
 {
     public function register(UserRegister $request) {
-        $validated = $request->validated();
-        $validated["password"] = Hash::make($validated["password"]);
-        $validated["department_id"] = 1;
-        $validated["status_id"] = 1 ;
-        $queryResult = User::create($validated);
+        $department = Department::find(1);
+        $request = request()->only(['avatar','name','username', 'email', 'password', 'status', 'department_id']);
+        $request["password"] = Hash::make($request["password"]);
+        $request["department_id"] = $department->department_id;
+        $queryResult = User::create($request);
         return $queryResult ? Controller::ResponseSuccess($queryResult, 'User successfully created') : Controller::ResponseError($queryResult, 'Cannot create user');
     }
 
@@ -27,5 +28,4 @@ class AuthController extends Controller
             return parent::ResponseError([], 'Login Failed');
         }
     }
-
 }

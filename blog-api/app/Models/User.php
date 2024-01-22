@@ -23,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'department_id',
-        'status_id'
+        'status'
     ];
 
     /**
@@ -47,9 +47,5 @@ class User extends Authenticatable
     
     public function department() {
         return $this->belongsTo(DepartMent::class , 'department_id', 'id');
-    }
-
-    public function status() {
-        return $this->belongsTo(UserStatus::class , 'status_id', 'id');
     }
 }
