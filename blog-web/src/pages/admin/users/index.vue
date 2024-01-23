@@ -33,15 +33,14 @@
 </template>
 
 <script>
-import { ref, defineComponent } from "vue";
-import { useMenu } from "../../../stores/use-menu.js";
-import * as userApi from "@/services/axios/UsersApi.js";
+import { ref, defineComponent, onMounted } from "vue";
+import { useMenu } from "@/stores/use-menu.js";
+import { useUserStore } from "@/stores/list.user.js";
 
 export default defineComponent({
   setup() {
     useMenu().onSelectedKeys(["admin-users"]);
-
-    const users = ref([]);
+    const userStore = useUserStore();
 
     const columns = [
       {
@@ -83,19 +82,13 @@ export default defineComponent({
         fixed: "right",
       },
     ];
+    onMounted(() => {
+      userStore.getUsers();
+    });
 
-    const getUsers = async () => {
-      try {
-        const res = await userApi.listUser({});
-        users.value = res;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUsers();
     return {
-      users,
       columns,
+      users: userStore.users,
     };
   },
 });

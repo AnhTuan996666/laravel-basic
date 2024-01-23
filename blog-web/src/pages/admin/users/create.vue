@@ -21,7 +21,7 @@
       </div>
 
       <div class="col-12 col-sm-8">
-        <div class="row mb-3">
+        <!--  <div class="row mb-3">
           <div class="col-12 col-sm-3 text-start text-sm-end">
             <label>
               <span class="text-danger me-1">*</span>
@@ -37,8 +37,8 @@
               :options="[]"
               :filter-option="[]"
             ></a-select>
-          </div>
-        </div>
+          </div> 
+        </div>-->
 
         <div class="row mb-3">
           <div class="col-12 col-sm-3 text-start text-sm-end">
@@ -49,10 +49,7 @@
           </div>
 
           <div class="col-12 col-sm-5">
-            <a-input
-              placeholder="Tên Tài khoản"
-              allow-clear
-            />
+            <a-input placeholder="Tên Tài khoản" allow-clear />
           </div>
         </div>
 
@@ -65,10 +62,7 @@
           </div>
 
           <div class="col-12 col-sm-5">
-            <a-input
-              placeholder="Họ và Tên"
-              allow-clear
-            />
+            <a-input placeholder="Họ và Tên" allow-clear />
           </div>
         </div>
 
@@ -81,10 +75,7 @@
           </div>
 
           <div class="col-12 col-sm-5">
-            <a-input
-              placeholder="Email"
-              allow-clear
-            />
+            <a-input placeholder="Email" allow-clear />
           </div>
         </div>
 
@@ -117,10 +108,7 @@
           </div>
 
           <div class="col-12 col-sm-5">
-            <a-input-password
-              placeholder="Mật khẩu"
-              allow-clear
-            />
+            <a-input-password placeholder="Mật khẩu" allow-clear />
           </div>
         </div>
 
@@ -133,10 +121,7 @@
           </div>
 
           <div class="col-12 col-sm-5">
-            <a-input-password
-              placeholder="Xác nhận mật khẩu"
-              allow-clear
-            />
+            <a-input-password placeholder="Xác nhận mật khẩu" allow-clear />
           </div>
         </div>
       </div>
@@ -172,23 +157,23 @@ export default defineComponent({
     const getListDepartments = async () => {
       try {
         const res = await userApi.listDepartments({});
-        departments.value = res.data.map(department =>({
-            value: department.id,
-            label: department.name,
+        departments.value = res.data.map((department) => ({
+          value: department.id,
+          label: department.name,
         }));
       } catch (error) {
         console.error(error);
       }
     };
 
-    onMounted(()=> {
+    onMounted(() => {
       getListDepartments();
-    })
-   
+    });
+
     return {
       departments,
-      selectedOption
-    }
+      selectedOption,
+    };
   },
 });
 </script>
