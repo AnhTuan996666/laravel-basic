@@ -29,7 +29,7 @@ class UserRegister extends FormRequest
             "name"=> "nullable",
             "username" => "required|string",
             "email" => "required|string|unique:users,email",
-            "password" => "required|string",
+            "password" => "required|string|confirmed",
             "avatar" => "nullable"
         ];
     }

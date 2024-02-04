@@ -16,8 +16,8 @@ use App\Http\Controllers\DepartMentController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function() {
+   Route::Get('/auth/users', [AuthController::class, 'getToken']);
 });
 
 Route::get('/user/{id}', [UserController::class, 'show']);
