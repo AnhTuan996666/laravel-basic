@@ -7,6 +7,8 @@ window.axios = axios;
 import {
     Form,
     Input,
+    Checkbox,
+    Switch,
     InputPassword,
     Select,
     Avatar,
@@ -47,7 +49,9 @@ app.use(InputPassword);
 app.use(Select);
 app.use(Avatar);
 app.use(Table);
+app.use(Checkbox);
 app.use(Card);
+app.use(Switch);
 app.use(Menu);
 app.use(List);
 app.use(Button);

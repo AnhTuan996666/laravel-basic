@@ -8,33 +8,39 @@
         autocomplete="off"
         :rules="rules"
         class="modal-content animate"
+        @finish="onFinish"
+        @finishFailed="onFinishFailed"
       >
         <div class="imgcontainer">
           <img src="@/assets/img/logo_login.png" alt="Avatar" class="avatar" />
         </div>
 
         <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <a-form-item name="username">
-            <a-input v-model="formState.username" />
+          <label><b>Email</b></label>
+          <a-form-item
+          name="email"
+          :rules="rules.email"
+        >
+          <a-input v-model:value="formState.email" />
+        </a-form-item>
+
+          <label><b>Password</b></label>
+          <a-form-item
+            name="password"
+            :rules="rules.password"
+          >
+            <a-input-password v-model:value="formState.password" />
           </a-form-item>
 
-          <label for="psw"><b>Password</b></label>
-          <a-form-item name="password">
-            <a-input-password v-model="formState.password" />
-          </a-form-item>
-
-          <button type="submit" @click="onSubmit">Login</button>
+          <a-button type="primary" class="btn-login" html-type="submit">Login</a-button>
           <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
-            me
+            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
           </label>
         </div>
 
         <div class="container" style="background-color: #f1f2f7">
           <button
             type="button"
-            onclick="document.getElementById('id01').style.display='none'"
             class="cancelbtn"
           >
             Sigup
@@ -47,15 +53,19 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { reactive, onMounted } from "vue";
+import { useAuthStore } from "@/stores/login.js";
+
 export default {
   setup() {
-    const formState = reactive({
-      username: "",
-      password: "",
-    });
+    const userStore = useAuthStore;
+   console.log(userStore.getUser);
 
-    const formRef = ref();
+    const formState = reactive({
+      email: '',
+      password: '',
+      remember: false,
+    });
 
     const rules = {
       password: [
@@ -66,37 +76,28 @@ export default {
         },
         {
           min: 3,
-          max: 5,
-          message: "Length should be 3 to 5",
+          message: "Length should be 3",
           trigger: "blur",
         },
       ],
-      username: [
+      email: [
         {
           required: true,
-          message: "Please input your username!",
+          message: "Please input your email!",
           trigger: "change",
-        },
-        {
-          min: 3,
-          max: 5,
-          message: "Length should be 3 to 5",
-          trigger: "blur",
         },
       ],
     };
 
-    const onSubmit = () => {
-      formRef.value
-        .validate()
-        .then(() => {
-          console.log("values", formState, toRaw(formState));
-        })
-        .catch((error) => {
-          console.log("error 1111", error);
-        });
+    const onFinish = () => {
+      const { email, password } = formState.value;
+      console.log('Success:', formState.value);
     };
-    return { onSubmit, formState, rules, formRef };
+
+    const onFinishFailed = errorInfo => {
+      console.log('Failed:', errorInfo);
+    };
+    return { onFinish,onFinishFailed, formState, rules, userStore};
   },
 };
 </script>
@@ -109,7 +110,6 @@ body {
 input[type="text"],
 input[type="password"] {
   width: 100%;
-  padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -220,5 +220,11 @@ span.psw {
 
 .ant-input-password .ant-input {
   height: 30px !important;
+}
+
+.btn-login {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 </style>
