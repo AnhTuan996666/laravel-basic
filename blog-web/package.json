@@ -16,6 +16,7 @@
     "ant-design-vue": "^3.2.5",
     "axios": "^1.6.5",
     "bootstrap": "^5.2.0-beta1",
+    "element-plus": "^2.5.5",
     "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"

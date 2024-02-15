@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
   public function register(UserRegister $request) {
     $request = request()->only(['avatar','name','username', 'email', 'password', 'status', 'department_id']);
-    $request["status"] = "1";
+    // $request["status"] = "1";
     $request["password"] = Hash::make($request["password"]);
     $queryResult = User::create($request);
     return $queryResult ? parent::ResponseSuccess($queryResult, 'User successfully created') : parent::ResponseError([], 'Cannot create user');

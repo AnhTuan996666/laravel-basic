@@ -17,34 +17,27 @@
 
         <div class="container">
           <label><b>Email</b></label>
-          <a-form-item
-          name="email"
-          :rules="rules.email"
-        >
-          <a-input v-model:value="formState.email" />
-        </a-form-item>
+          <a-form-item name="email" :rules="rules.email">
+            <a-input v-model:value="formState.email" />
+          </a-form-item>
 
           <label><b>Password</b></label>
-          <a-form-item
-            name="password"
-            :rules="rules.password"
-          >
+          <a-form-item name="password" :rules="rules.password">
             <a-input-password v-model:value="formState.password" />
           </a-form-item>
 
-          <a-button type="primary" class="btn-login" html-type="submit">Login</a-button>
+          <a-button type="primary" class="btn-login" html-type="submit"
+            >Login</a-button
+          >
           <label>
-            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+            <a-checkbox v-model:checked="remember.value"
+              >Remember me</a-checkbox
+            >
           </label>
         </div>
 
         <div class="container" style="background-color: #f1f2f7">
-          <button
-            type="button"
-            class="cancelbtn"
-          >
-            Sigup
-          </button>
+          <button type="button" class="cancelbtn">Sigup</button>
           <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
       </a-form>
@@ -53,19 +46,19 @@
 </template>
 
 <script>
-import { reactive, onMounted } from "vue";
-import { useAuthStore } from "@/stores/login.js";
+import { reactive, ref } from "vue";
+import { useUserStore } from "@/stores/login.js";
 
 export default {
   setup() {
-    const userStore = useAuthStore;
-   console.log(userStore.getUser);
+    const userStore = useUserStore();
 
     const formState = reactive({
-      email: '',
-      password: '',
-      remember: false,
+      email: "",
+      password: "",
     });
+
+    const remember = ref(false);
 
     const rules = {
       password: [
@@ -89,15 +82,15 @@ export default {
       ],
     };
 
-    const onFinish = () => {
-      const { email, password } = formState.value;
-      console.log('Success:', formState.value);
+    const onFinish = async () => {
+      console.log("Success:", formState.email, formState.password);
+      await userStore.login(formState.email, formState.password);
     };
 
-    const onFinishFailed = errorInfo => {
-      console.log('Failed:', errorInfo);
+    const onFinishFailed = (errorInfo) => {
+      console.log("Failed:", errorInfo);
     };
-    return { onFinish,onFinishFailed, formState, rules, userStore};
+    return { onFinish, onFinishFailed, formState, rules, remember };
   },
 };
 </script>
