@@ -16,13 +16,21 @@ use App\Http\Controllers\DepartMentController;
 |
 */
 
+Route::prefix('v1')->group(function() {
+   Route::get('/user/{id}', [UserController::class, 'show']);
+   Route::get('/users', [UserController::class, 'index']);
+   Route::get('/department/list', [DepartMentController::class, 'index']);
+   Route::post('/register', [AuthController::class, 'register']);
+   Route::post('/login', [AuthController::class, 'login']);
+});
+
 Route::middleware('auth:api')->group(function() {
    Route::Get('/auth/users', [AuthController::class, 'getToken']);
 });
 
-Route::get('/user/{id}', [UserController::class, 'show']);
-Route::get('/users', [UserController::class, 'index']);
+// Route::get('/user/{id}', [UserController::class, 'show']);
+// Route::get('/users', [UserController::class, 'index']);
 
-Route::get('/department/list', [DepartMentController::class, 'index']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+// Route::get('/department/list', [DepartMentController::class, 'index']);
+// Route::post('/register', [AuthController::class, 'register']);
+// Route::post('/login', [AuthController::class, 'login']);

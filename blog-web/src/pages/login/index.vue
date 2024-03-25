@@ -47,11 +47,11 @@
 
 <script>
 import { reactive, ref } from "vue";
-import { useUserStore } from "@/stores/login.js";
+import { useUserStoreLogin } from "@/stores/login.js";
 
 export default {
   setup() {
-    const userStore = useUserStore();
+    const userStore = useUserStoreLogin();
 
     const formState = reactive({
       email: "",
