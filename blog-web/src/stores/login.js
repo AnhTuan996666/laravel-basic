@@ -9,10 +9,9 @@ export const useUserStoreLogin = defineStore("user", () => {
     token: '',
   });
 
-  const login = async () => {
+  const login = async (params) => {
     try {
-      const res = await AuthApi.login({email: users.email, password: users.password});
-      console.log(res);
+      const res = await AuthApi.login(params);
       users.token =  res.data.token;
     } catch (error) {
       console.error(error);

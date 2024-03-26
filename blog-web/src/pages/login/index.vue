@@ -83,8 +83,8 @@ export default {
     };
 
     const onFinish = async () => {
-      console.log("Success:", formState.email, formState.password);
-      await userStore.login(formState.email, formState.password);
+      console.log("Success:", formState);
+      await userStore.login(formState);
     };
 
     const onFinishFailed = (errorInfo) => {
