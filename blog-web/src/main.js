@@ -23,15 +23,6 @@ import {
 
 import App from './App.vue';
 
-// Sử dụng Icon Font Awesome cách 2
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { fas } from '@fortawesome/free-solid-svg-icons';
-// import { fab } from '@fortawesome/free-brands-svg-icons';
-// import { far } from '@fortawesome/free-regular-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-// library.add(fas, fab, far);
-
-// Sử dụng Icon Font Awesome cách 1
 import './static/fontawesome/css/all.min.css';
 
 import 'ant-design-vue/dist/antd.css';
@@ -39,24 +30,22 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 
 const app = createApp(App);
-// Sử dụng Icon Font Awesome cách 2
-// app.component('font-awesome-icon', FontAwesomeIcon);
 
-app.use(createPinia());
-app.use(router);
-app.use(Input);
-app.use(InputPassword);
-app.use(Select);
-app.use(Avatar);
-app.use(Table);
-app.use(Checkbox);
-app.use(Card);
-app.use(Switch);
-app.use(Menu);
-app.use(List);
-app.use(Button);
-app.use(Drawer);
-app.use(Form);
+app.use(createPinia())
+.use(router)
+.use(Input)
+.use(InputPassword)
+.use(Select)
+.use(Avatar)
+.use(Table)
+.use(Checkbox)
+.use(Card)
+.use(Switch)
+.use(Menu)
+.use(List)
+.use(Button)
+.use(Drawer)
+.use(Form);
 app.mount('#app');
 
 app.config.globalProperties.$message = message;

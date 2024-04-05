@@ -8,6 +8,14 @@ export const listUser = async () => {
   }
 };
 
+export const changeStatus = async (id, newStatus) => {
+  try {
+    return await httpRequest.post(`change/status/${id}`, { status: newStatus });
+  } catch (error) {
+    console.log('error: ', error);
+  }
+};
+
 export const listDepartments = async () => {
   try {
     return await httpRequest.get('department/list');

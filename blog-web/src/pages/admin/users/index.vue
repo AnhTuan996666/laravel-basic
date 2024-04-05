@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <a-table :dataSource="users" :columns="columns" :scroll="{ x: 576 }">
+        <a-table :dataSource="users.value" :columns="columns" :scroll="{ x: 576 }">
           <template #bodyCell="{ column, index, record }">
             <template v-if="column.key === 'index'">
               <span>{{ index + 1 }}</span>
@@ -25,13 +25,13 @@
 
             <template v-if="column.key === 'status'">
               <label class="switch">
-                <input type="checkbox" :checked="record.status === '1'" @change="handleChange">
+                <input type="checkbox" :checked="record.status === '1'" @click="handleChange(record.id, $event)">
                 <span class="slider round"></span>
               </label>
 
-              <span :class="record.status === '1' ? 'text-primary' : 'text-danger'">{{
+              <p :class="record.status === '1' ? 'text-primary' : 'text-danger'">{{
                 record.status === '1' ? 'Active' : 'Not Active'
-              }}</span>
+              }}</p>
             </template>
           </template>
         </a-table>
@@ -41,14 +41,15 @@
 </template>
 
 <script>
-import { ref,defineComponent, onMounted } from "vue";
-import { useMenu } from "@/stores/use-menu.js";
+import { ref, onMounted } from "vue";
 import { useUserStore } from "@/stores/list.user.js";
+import { useMenu } from "@/stores/use-menu.js";
 
-export default defineComponent({
+export default({
   setup() {
     useMenu().onSelectedKeys(["admin-users"]);
     const userStore = useUserStore();
+    const { getUsers, users, changeStatusUsers } = userStore;
     const checked = ref(false);
     const columns = [
       {
@@ -91,10 +92,6 @@ export default defineComponent({
       },
     ];
 
-    onMounted(() => {
-      userStore.getUsers();
-    });
-
     const getDepartments = (departments) => {
       switch (departments) {
         case '1':
@@ -112,15 +109,19 @@ export default defineComponent({
       }
     };
 
-    const handleChange = (event) => {
-        console.log(event);
-      console.log('Checkbox changed', event.target.checked);
-    }
+    const handleChange = async (id, event) => {
+      const newStatus = event.target.checked ? '1' : '0';
+      await changeStatusUsers(id, newStatus);
+    };
+
+    onMounted(async () => {
+      await getUsers()
+    });
 
     return {
+      users,
       columns,
       getDepartments,
-      users: userStore.users,
       checked,
       handleChange
     };
