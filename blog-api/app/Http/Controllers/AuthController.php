@@ -25,6 +25,12 @@ class AuthController extends Controller
     }else return parent::ResponseError([], 'Login Failed');
   }
 
+  public function logout() {
+    $user = auth()->user();
+    $user->token()->revoke();
+    return parent::ResponseSuccess($user, 'Logout success');
+  }
+
   public function getToken() {
     $user = auth()->user();
     return parent::ResponseSuccess($user ,'Token success');

@@ -13,9 +13,9 @@
       <div class="col-12">
         <a-table :dataSource="users.value" :columns="columns" :scroll="{ x: 576 }">
           <template #bodyCell="{ column, index, record }">
-            <template v-if="column.key === 'index'">
+            <templat v-if="column.key === 'index'">
               <span>{{ index + 1 }}</span>
-            </template>
+            </templat>
 
             <template v-if="column.key === 'departments'">
               <span :class="record.departments === '1' ? 'text-primary' : 'text-danger'">{{
@@ -55,15 +55,16 @@ export default({
       {
         title: "#",
         key: "index",
+        width: 50,
       },
       {
         title: "Avatar",
         key: "avatar",
       },
       {
-        title: "Tài khoản",
-        dataIndex: "username",
-        key: "username",
+        title: "Email",
+        dataIndex: "email",
+        key: "email",
       },
       {
         title: "Họ Tên",
@@ -78,7 +79,8 @@ export default({
       },
       {
         title: "Vai trò",
-        key: "roles",
+        key: "departments",
+        responsive: ["sm"],
       },
       {
         title: "Tình trạng",

@@ -1,5 +1,6 @@
 <template>
-  <div class="container-fluid">
+  <div>
+    <div class="container-fluid">
     <div
       class="row text-white"
       style="background-color: #0c713d; padding: 1rem"
@@ -60,6 +61,7 @@
     <p>Some contents...</p>
     <p>Some contents...</p>
   </a-drawer>
+  </div>
 </template>
 
 <script>

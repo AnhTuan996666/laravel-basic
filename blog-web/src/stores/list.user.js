@@ -9,6 +9,7 @@ export const useUserStore = defineStore("user", () => {
     try {
       const res = await userApi.listUser({});
       users.value = res;
+
     } catch (error) {
       console.error(error);
     }
@@ -22,7 +23,7 @@ export const useUserStore = defineStore("user", () => {
       console.error(error);
     }
   };
-  
+
   return {
     users,
     getUsers,

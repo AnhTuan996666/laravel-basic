@@ -27,6 +27,12 @@
         </span>
       </router-link>
     </a-menu-item>
+
+    <a-menu-item >
+        <span @click="handleRemoveToken">
+          <SettingOutlined class="me-1"/>Log out
+        </span>
+    </a-menu-item>
   </a-menu>
 </template>
 
@@ -43,9 +49,13 @@ export default defineComponent({
   },
   setup() {
     const store = useMenu();
-
+    const handleRemoveToken = () => {
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
     return {
       ...storeToRefs(store),
+      handleRemoveToken
     };
   },
 });
