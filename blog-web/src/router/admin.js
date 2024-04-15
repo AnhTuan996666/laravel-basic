@@ -1,7 +1,7 @@
-import UsersList from "../pages/admin/users/index.vue";
-import UsersCreate from "../pages/admin/users/create.vue";
-import UsersRoles from "../pages/admin/roles/index.vue";
-import UsersSettings from "../pages/admin/settings/index.vue";
+import UsersList from "@/pages/admin/users/index.vue";
+import UsersCreate from "@/pages/admin/users/create.vue";
+import UsersRoles from "@/pages/admin/roles/index.vue";
+import UsersSettings from "@/pages/admin/settings/index.vue";
 
 //login
 import Login from "../pages/login/index.vue";

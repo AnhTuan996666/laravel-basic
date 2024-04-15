@@ -14,7 +14,8 @@ export const useUserStoreLogin = defineStore("user", () => {
       const res = await AuthApi.login(params);
       if (res && res.token) {
         localStorage.setItem('token', res.token);
-        router.push({ path: '/admin/users' });
+        // router.push({ path: '/admin/users' });
+        window.location.pathname = '/admin/users';
       }
     } catch (error) {
       console.error(error);
