@@ -23,3 +23,11 @@ export const listDepartments = async () => {
     console.log('error: ', error);
   }
 };
+
+export const createUsers = async (params) => {
+  try {
+    return await httpRequest.post('register', params);
+  } catch (error) {
+    console.log('error: ', error);
+  }
+};
