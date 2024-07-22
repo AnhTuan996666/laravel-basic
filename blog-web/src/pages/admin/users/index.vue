@@ -18,8 +18,8 @@
             </templat>
 
             <template v-if="column.key === 'departments'">
-              <span :class="record.departments === '1' ? 'text-primary' : 'text-danger'">{{
-                getDepartments(record.departments)
+              <span class="'text-primary'">{{
+                record.departments
               }}</span>
             </template>
 
@@ -42,14 +42,13 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import { useUserStore } from "@/stores/list.user.js";
+import { useUserStore } from "@/stores/user.store.js";
 import { useMenu } from "@/stores/use-menu.js";
 
 export default({
   setup() {
     useMenu().onSelectedKeys(["admin-users"]);
-    const userStore = useUserStore();
-    const { getUsers, users, changeStatusUsers } = userStore;
+    const { getUsers, users, changeStatusUsers } = useUserStore();
     const checked = ref(false);
     const columns = [
       {
@@ -94,23 +93,6 @@ export default({
       },
     ];
 
-    const getDepartments = (departments) => {
-      switch (departments) {
-        case '1':
-          return 'Giám đốc';
-          break;
-        case '2':
-        return 'Quản lý';
-        break;
-
-        case '3':
-        return 'Nhân viên bán hàng';
-        break;
-        default:
-          break;
-      }
-    };
-
     const handleChange = async (id, event) => {
       const newStatus = event.target.checked ? '1' : '0';
       await changeStatusUsers(id, newStatus);
@@ -123,7 +105,6 @@ export default({
     return {
       users,
       columns,
-      getDepartments,
       checked,
       handleChange
     };

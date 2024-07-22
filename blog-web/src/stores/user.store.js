@@ -23,9 +23,19 @@ export const useUserStore = defineStore("user", () => {
     }
   };
 
+  const createUsersApi = async (prams) => {
+    try {
+      const res = await userApi.createUsers(prams);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     users,
     getUsers,
     changeStatusUsers,
+    createUsersApi,
   };
 });
