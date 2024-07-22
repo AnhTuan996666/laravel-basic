@@ -1,29 +1,29 @@
 <template>
   <div class="main">
-    <TheHeader />
+    <Header />
     <div class="main-content">
       <div class="left">
-        <TheSidebar />
+        <Sidebar />
       </div>
       <div class="right">
         <router-view></router-view>
       </div>
     </div>
-    <TheFooter />
+    <Footer />
   </div>
 </template>
 
 <script>
-import TheHeader from './common/Header.vue';
-import TheFooter from './common/Footer.vue';
-import TheSidebar from './common/Sidebar.vue';
+import Header from './common/Header.vue';
+import Footer from './common/Footer.vue';
+import Sidebar from './common/Sidebar.vue';
 
 export default {
   name: 'normal-layout',
   components: {
-    TheHeader,
-    TheFooter,
-    TheSidebar,
+    Header,
+    Footer,
+    Sidebar,
   },
 };
 </script>

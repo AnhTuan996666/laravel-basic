@@ -12,8 +12,8 @@
   },
   "common": {
     "select-option-default": "Please choose",
-    "please": "Please enter {label}",
-    "please_number": "Please number enter {label}",
+    "please": "Please enter",
+    "please_number": "Please number enter",
     "save": "Save",
     "cancel": "Cancel",
     "error": "Error",

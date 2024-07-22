@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import ElementPlus from "element-plus";
+import ElementPlus from 'element-plus';
 import "@/assets/style/App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
