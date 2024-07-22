@@ -1,7 +1,5 @@
-const Languages = {
+export const Languages = {
+  EN: "en",
   JA: "ja",
   VI: "vi",
-  EN: "en",
 };
-
-export default Languages;

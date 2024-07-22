@@ -1,5 +1,27 @@
 {
-  "auth": {
-    "user_name": "Username"
+  "login": {
+    "user_name": "Username",
+    "password": "Password",
+    "btn_login": "Login",
+    "message_error": "Account and password are incorrect"
+  },
+  "language": {
+    "vi": "Việt Nam",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "common": {
+    "select-option-default": "Please choose",
+    "please": "Please enter {label}",
+    "please_number": "Please number enter {label}",
+    "save": "Save",
+    "cancel": "Cancel",
+    "error": "Error",
+    "success": "Success",
+    "ok": "OK",
+    "page-not-found": "Page not found",
+    "redirecting-to": "Redirecting to ",
+    "home": "Home",
+    "404": "404"
   }
 }

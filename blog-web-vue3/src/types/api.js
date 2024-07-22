@@ -1,58 +1,51 @@
-/**
- * @typedef {Object} SuccessDataInterface
- * @property {boolean} success
- * @property {*} data
- * @property {string} message
- * @property {*} otherData
- */
+export interface SuccessDataInterface {
+  success: boolean;
+  data: unknown;
+  message: string;
+  otherData: unknown;
+}
 
-/**
- * @typedef {Object} SuccessResponseInterface
- * @property {boolean} success
- * @property {*} data
- * @property {string} message
- * @property {*} otherData
- */
+export interface SuccesResponseInterface {
+  success: boolean;
+  data: unknown;
+  message: string;
+  otherData: unknown;
+}
 
-/**
- * @typedef {Object} ErrorDataInterface
- * @property {ErrorDataInterface} data
- * @property {string} message
- * @property {number} code
- * @property {number} status
- * @property {number} responseCode
- * @property {Object} [errors]
- */
+export interface ErrorDataInterface {
+  data: ErrorDataInterface;
+  message: string;
+  code: number;
+  status: number;
+  responseCode: number;
+  errors?: object;
+}
 
-/**
- * @typedef {Object} ErrorResponseInterface
- * @property {string} message
- * @property {number} code
- * @property {number} responseCode
- * @property {boolean} error
- * @property {ValidationErrorMessageInterface[]} [errors]
- */
+export interface ErrorResponseInterface {
+  message: string;
+  code: number;
+  responseCode: number;
+  error: boolean;
+  errors?: ValidationErrorMessageInterface[];
+}
 
-/**
- * @typedef {Object} ErrorBaseResponseInterface
- * @property {string} message
- * @property {number} code
- * @property {number} responseCode
- * @property {boolean} error
- * @property {ErrorDataInterface} response
- * @property {Object} [errors]
- */
+export interface ErrorBaseResponseInterface {
+  message: string;
+  code: number;
+  responseCode: number;
+  error: boolean;
+  response: ErrorDataInterface;
+  errors?: object;
+}
 
-/**
- * @typedef {Object} OptionInterface
- * @property {string} url
- * @property {string} method
- * @property {Object} [params]
- * @property {Object} [data]
- */
+export interface OptionInterface {
+  url: string;
+  method: string;
+  params?: object;
+  data?: object;
+}
 
-/**
- * @typedef {Object} ValidationErrorMessageInterface
- * @property {string} field
- * @property {string[]} messages
- */
+export interface ValidationErrorMessageInterface {
+  field: string;
+  messages: string[];
+}
