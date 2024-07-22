@@ -1,0 +1,25 @@
+{
+  "login": {
+    "user_name": "Tài khoản",
+    "password": "Mật khẩu",
+    "btn_login": "Đăng nhập",
+    "message_error": "Tài khoản và mật khẩu không đúng"
+  },
+  "language": {
+    "vi": "Việt Nam",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "common": {
+    "select-option-default": "Vui lòng chọn",
+    "save": "Lưu lại",
+    "cancel": "Hủy bỏ",
+    "error": "Lỗi",
+    "success": "Thành công",
+    "ok": "Đồng ý",
+    "page-not-found": "Không tìm thấy trang",
+    "redirecting-to": "Chuyển hướng đến ",
+    "home": "Trang chủ",
+    "404": "404"
+  }
+}

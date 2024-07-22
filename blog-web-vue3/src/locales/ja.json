@@ -1,0 +1,27 @@
+{
+  "login": {
+    "user_name": "ユーザー名",
+    "password": "パスワード",
+    "btn_login": "ログイン",
+    "message_error": "アカウントとパスワードが間違っています"
+  },
+  "language": {
+    "vi": "Việt Nam",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "common": {
+    "select-option-default": "選んでください",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "error": "エラー",
+    "success": "成功",
+    "please": "入ってください {label}",
+    "please_number": "Please number enter {label}",
+    "ok": "同意する",
+    "page-not-found": "ページが見つかりません",
+    "redirecting-to": "リダイレクト先 ",
+    "home": "家",
+    "404": "404"
+  }
+}
