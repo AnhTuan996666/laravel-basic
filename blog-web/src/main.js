@@ -4,22 +4,7 @@ import router from './router/index.js'
 import axios from 'axios'
 window.axios = axios;
 
-import {
-    Form,
-    Input,
-    Checkbox,
-    Switch,
-    InputPassword,
-    Select,
-    Avatar,
-    Table,
-    Card,
-    Menu,
-    List,
-    Drawer, 
-    Button,
-    message 
-} from 'ant-design-vue';
+import Antd from 'ant-design-vue';
 
 import App from './App.vue';
 
@@ -33,19 +18,7 @@ const app = createApp(App);
 
 app.use(createPinia())
 .use(router)
-.use(Input)
-.use(InputPassword)
-.use(Select)
-.use(Avatar)
-.use(Table)
-.use(Checkbox)
-.use(Card)
-.use(Switch)
-.use(Menu)
-.use(List)
-.use(Button)
-.use(Drawer)
-.use(Form);
+.use(Antd)
 app.mount('#app');
 
 app.config.globalProperties.$message = message;

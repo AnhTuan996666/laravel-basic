@@ -30,25 +30,6 @@
       </div>
 
       <div class="col-12 col-sm-8">
-        <!--  <div class="row mb-3">
-          <div class="col-12 col-sm-3 text-start text-sm-end">
-            <label>
-              <span class="text-danger me-1">*</span>
-              <span>Tình trạng:</span>
-            </label>
-          </div>
-
-          <div class="col-12 col-sm-5">
-            <a-select
-              show-search
-              placeholder="Tình trạng"
-              style="width: 100%"
-              :options="[]"
-              :filter-option="[]"
-            ></a-select>
-          </div> 
-        </div>-->
-
         <div class="row mb-3">
           <div class="col-12 col-sm-3 text-start text-sm-end">
             <label>
