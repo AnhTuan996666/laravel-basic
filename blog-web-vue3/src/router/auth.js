@@ -6,10 +6,6 @@ const authRouter = [
     path: PATHS.AUTH.LOGIN,
     component: () => Login,
   },
-  {
-    path: PATHS.AUTH.LOGIN_CENTER,
-    component: () => LoginCenter,
-  },
 ];
 
 export default authRouter;

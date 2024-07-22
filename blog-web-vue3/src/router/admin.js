@@ -1,8 +1,13 @@
 import Normal from "@/layouts/NormalLayout.vue";
+import NotFound from "@/layouts/common/NotFound.vue";
 import Dashboard from "@/views/Admin/Dashboard.vue";
 import { PATHS } from "@/constants/path";
 
-const adminRouter = [
+const Router = [
+  {
+    path: "/:pathMatch(.*)*",
+    component: () => NotFound,
+  },
   {
     path: PATHS.ADMIN,
     component: () => Normal,
@@ -26,4 +31,4 @@ const adminRouter = [
   },
 ];
 
-export default adminRouter;
+export default Router;
